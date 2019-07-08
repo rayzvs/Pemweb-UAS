@@ -26,17 +26,17 @@ class User extends CI_Controller {
 		$username = $_POST['username'];
 		$fullname = $_POST['fullname'];
 		$password = $_POST['password'];
-		$idrole = $_POST['idrole'];
+		$role = $_POST['role'];
 
 		// panggil method insertBook() di model 'book_model' untuk menjalankan query insert
-		$this->user_model->insertUser($username, $fullname, $idrole, $password);
+		$this->user_model->insertUser($username, $fullname, $role, $password);
 
 		// arahkan ke method 'books' di kontroller 'dashboard'
 		redirect('dashboard/addUser');
 	}
 
     public function edit($id){
-    	$data['roles'] = $this->user_model->getRole();
+    	
         $data['view_user'] = $this->user_model->showUser($id);
 
         $data['fullname'] = $_SESSION['fullname'];
@@ -47,7 +47,7 @@ class User extends CI_Controller {
 
         $data['username'] = $data['view_user']['username'];
         $data['fullname'] = $data['view_user']['fullname'];
-        $data['idrole'] = $data['view_user']['idrole'];
+        $data['role'] = $data['view_user']['role'];
         $data['password'] = $data['view_user']['password'];
 
         $this->load->view('dashboard/header', $data);
@@ -55,15 +55,15 @@ class User extends CI_Controller {
         $this->load->view('dashboard/footer');
     }
 
-    public function update(){
+    public function update($oldusername){
 
 		$username = $_POST['username'];
 		$fullname = $_POST['fullname'];
-		$idrole = $_POST['idrole'];
+		$role = $_POST['role'];
 		$password = $_POST['password'];
 
 		// panggil method insertBook() di model 'book_model' untuk menjalankan query insert
-		$this->user_model->updateUser($username, $fullname, $idrole, $password);
+		$this->user_model->updateUser($username, $fullname, $role, $password, $oldusername);
 
 		// arahkan ke method 'books' di kontroller 'dashboard'
 		redirect('dashboard/addUser');

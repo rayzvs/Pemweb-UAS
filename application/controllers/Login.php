@@ -14,16 +14,19 @@ class Login extends CI_Controller {
         	$password = $_POST['password'];
 
         	// panggil method getUserProfile() dari user_model untuk membaca data profile user
-        	$data['user'] = $this->user_model->getUserProfile($username);
+        	print_r($data['user'] = $this->user_model->getUserProfile($username));
+
 
         	// bandingkan password user dari database dengan yang disubmit via form
         	if ($data['user']['password'] == $password){
         		// jika password sama, maka simpan username dan fullname user ke session
         		$_SESSION['username'] = $username;
         		$_SESSION['fullname'] = $data['user']['fullname'];
-                if ($data['user']['idrole'] == 1) {
+                if ($data['user']['role'] == 'admin') {
                     redirect('dashboard');
+                  
                 } else {
+                   
                     redirect('dashboardUser');
                 }
         	} else {

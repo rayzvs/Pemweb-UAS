@@ -25,13 +25,13 @@
           <div class="form-group row">
               <label for="role" class="col-sm-2 col-form-label">Role User</label>
               <div class="col-sm-10">
-                  <select class="form-control" name="idrole">
+                  <select class="form-control" name="role">
     
                   <?php
                       // menampilkan combo box berisi kategori buku
-                      foreach ($roles as $role):
+                      foreach ($user as $usera):
                   ?>
-                      <option value="<?php echo $role['idrole']?>"><?php echo $role['role']?></option>
+                      <option value="<?php echo $usera['role']?>"><?php echo $usera['role']?></option>
                   <?php
                       endforeach;
                   ?>
@@ -77,16 +77,16 @@
             <?php 
             $no = $this->uri->segment('') + 1;
             // menampilkan data buku
-            foreach ($user as $user): 
+            foreach ($user as $user_item): 
 
             ?>
             <tr>
               <td><?php echo $no++; ?></td>
-              <td><?php echo $user['username']?></td>
-              <td><?php echo $user['fullname']; ?></td>
-              <td><?php echo $user['password']; ?></td>
-              <td><?php echo $user['idrole']; ?></td>
-              <td> <?php echo anchor('user/edit/'.$user['username'], 'Edit') ?> | <?php echo anchor('user/delete/'.$user['username'], 'Del'); ?></td>
+              <td><?php echo $user_item['username']?></td>
+              <td><?php echo $user_item['fullname']; ?></td>
+              <td><?php echo $user_item['password']; ?></td>
+              <td><?php echo $user_item['role']; ?></td>
+              <td> <?php echo anchor('user/edit/'.$user_item['username'], 'Edit') ?> | <?php echo anchor('user/delete/'.$user_item['username'], 'Del'); ?></td>
             </tr>
             <?php endforeach; ?>
           </tbody>

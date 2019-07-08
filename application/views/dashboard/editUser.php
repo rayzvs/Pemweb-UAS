@@ -4,10 +4,7 @@
         <p>*Tidak dapat mengedit Username, karena merupakan primary key</p>
       </div>
 
-      <?php
-      // arahkan form submit ke kontroller 'book/insert' 
-      echo form_open_multipart('user/update'); 
-      ?>
+      <form action=<?php echo site_url('user/update/'); echo $username ?> method='post'>
 
           <div class="form-group row" display=none>
               <div class="col-sm-10">
@@ -25,16 +22,12 @@
           <div class="form-group row">
               <label for="role" class="col-sm-2 col-form-label">Role User</label>
               <div class="col-sm-10">
-                  <select class="form-control" name="idrole">
+                  <select class="form-control" name="role">
     
-                  <?php
-                      // menampilkan combo box berisi kategori buku
-                      foreach ($roles as $role):
-                  ?>
-                      <option value="<?php echo $role['idrole']?>"><?php echo $role['role']?></option>
-                  <?php
-                      endforeach;
-                  ?>
+                  
+                      <option value="admin">admin</option>
+                      <option value="operator">operator</option>
+                  
                   </select>
               </div>
           </div>
@@ -53,4 +46,5 @@
                   <button type="submit" class="btn btn-primary mb-2">Edit User</button>      
               </div>
           </div>
+         </form> 
   </main>

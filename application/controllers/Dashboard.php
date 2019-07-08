@@ -102,9 +102,9 @@ class Dashboard extends CI_Controller {
         // method untuk melihat dan menambah data kategori buku
         public function addUser(){
             // panggil method showCat() di category_model untuk membaca data list kategori dari tabel kategori untuk ditampilkan ke view
-            $data['user'] = $this->user_model->showUser();
+           print_r($data['user'] = $this->user_model->showUser());
             // panggil method getKategori() di model_book untuk membaca data list kategori dari tabel kategori untuk ditampilkan ke view
-            $data['roles'] = $this->user_model->getRole();
+           
 
             // menghitung jumlah data buku per kategori untuk ditampilkan di view
             $data['countBukuTeks'] = 0;
